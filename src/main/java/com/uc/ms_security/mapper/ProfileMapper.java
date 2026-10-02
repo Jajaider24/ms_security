@@ -1,12 +1,13 @@
 package com.uc.ms_security.mapper;
 
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
 import com.uc.ms_security.dto.profile.CreateProfileDTO;
 import com.uc.ms_security.dto.profile.ProfileResponseDTO;
 import com.uc.ms_security.dto.profile.UpdateProfileDTO;
 import com.uc.ms_security.entity.Profile;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class ProfileMapper {
@@ -24,6 +25,9 @@ public class ProfileMapper {
     }
 
     public ProfileResponseDTO toResponseDTO(Profile profile) {
+        if (profile == null) {
+            return null;
+        }
         return new ProfileResponseDTO(
                 profile.getId(),
                 profile.getPhone(),
